@@ -1,7 +1,7 @@
 import React from 'react'
 import { Protect, useClerk, useUser } from '@clerk/clerk-react'
 import { assets } from '../assets/assets'
-import { Eraser, FileText, Hash, House, Image, LogOut, Scissors, SquarePen, Users } from 'lucide-react'
+import { Eraser, FileText, Hash, House, Image, LogOut, Scissors, SquarePen, Users, ListTree } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 const navItems = [
    {to: '/ai', label: 'Dashboard', icon: House},
@@ -11,6 +11,7 @@ const navItems = [
    {to: '/ai/remove-background', label: 'Remove Background', icon: Eraser},
    {to: '/ai/remove-object', label: 'Remove Object', icon: Scissors},
    {to: '/ai/review-resume', label: 'Review Resume', icon: FileText},
+   {to: '/ai/summarize-text', label: 'Summarize Text', icon: ListTree},
    {to: '/ai/community', label: 'Community', icon: Users},
 ]
 const Sidebar = ({ sidebar, setSidebar }) => {

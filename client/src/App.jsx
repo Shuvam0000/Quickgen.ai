@@ -11,6 +11,7 @@ import RemoveObject from './pages/RemoveObject'
 import ReviewResume from './pages/ReviewResume'
 import Community from './pages/Community'
 import { useAuth } from '@clerk/clerk-react'
+import SummarizeText from './pages/SummarizeText'
 import { Toaster} from 'react-hot-toast'
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
         <Route path='remove-background' element={<RemoveBackground/>} />
         <Route path='remove-object' element={<RemoveObject/>} />
         <Route path='review-resume' element={<ReviewResume/>} />
+        <Route path='summarize-text' element={<SummarizeText/>} />
         <Route path='community' element={<Community/>} />
         </Route>
       </Routes>
