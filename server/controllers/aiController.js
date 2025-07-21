@@ -245,13 +245,11 @@ export const summarizeText = async (req, res) => {
     const { userId } = req.auth();
     const { prompt } = req.body;
     const plan = req.plan;
-    const free_usage = req.free_usage;
 
-    if (plan !== "premium" && free_usage >= 10) {
+    if (plan !== "premium") {
       return res.json({
         success: false,
-        message:
-          "Free usage limit exceeded. Upgrade to premium for unlimited access.",
+        message: "This feature is only available for premium users.",
       });
     }
     const response = await AI.chat.completions.create({
@@ -269,13 +267,6 @@ export const summarizeText = async (req, res) => {
     await sql` INSERT INTO creations (user_id, prompt, content, type) 
   VALUES (${userId}, ${prompt}, ${content}, 'summary')`;
 
-    if (plan !== "premium") {
-      await clerkClient.users.updateUserMetadata(userId, {
-        privateMetadata: {
-          free_usage: free_usage + 1,
-        },
-      });
-    }
     res.json({ success: true, content });
   } catch (error) {
     console.log(error.message);
